@@ -40,7 +40,7 @@ public class MiroSignUpPage {
         return this;
     }
 
-    @Step("Click on Get Started Now button")
+    @Step("Click on Agreement to Terms and Privacy Policy")
     public final MiroSignUpPage agreeToTerms() {
         waitAndClick(iAgreeToTerms, driverWait, "Get Started Now button, sign up page");
         return this;

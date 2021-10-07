@@ -30,7 +30,7 @@ public class MiroMainPage {
     @Step("Click Accept all cookies if shown")
     public MiroMainPage acceptCookiesIfShown () {
         if (acceptAllCookies.isDisplayed()) {
-            waitAndClick(acceptAllCookies, driverWait, "Sign Up Button, main page");
+            waitAndClick(acceptAllCookies, driverWait, "Accept All Cookies button, main page");
         }
         return this;
     }
