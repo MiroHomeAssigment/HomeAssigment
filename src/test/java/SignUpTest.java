@@ -8,7 +8,6 @@ public class SignUpTest extends WebDriverLauncher {
     @Test
     @DisplayName("Sing up, valid data")
     public void signUpTest() {
-        driver.get("https://miro.com");
         MiroMainPage miroMainPage = new MiroMainPage(driver);
         MiroSignUpPage miroSignUpPage = new MiroSignUpPage(driver);
 
