@@ -11,12 +11,12 @@ import static Utils.WebDriverLauncher.driver;
 import static Utils.WebDriverLauncher.driverWait;
 import static Utils.WaiterHelper.waitAndClick;
 
-public class MiroMainPage {
-    public MiroMainPage(WebDriver driver) {
+public class MainPage {
+    public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public MiroMainPage open() {
+    public MainPage open() {
         driver.get("https://miro.com");
         return this;
     }
@@ -28,7 +28,7 @@ public class MiroMainPage {
     private WebElement acceptAllCookies;
 
     @Step("Click Accept all cookies if shown")
-    public MiroMainPage acceptCookiesIfShown () {
+    public MainPage acceptCookiesIfShown () {
         if (acceptAllCookies.isDisplayed()) {
             waitAndClick(acceptAllCookies, driverWait, "Accept All Cookies button, main page");
         }
@@ -36,7 +36,7 @@ public class MiroMainPage {
     }
 
     @Step("Click on Sign Up button")
-    public final MiroMainPage clickSignUp() {
+    public final MainPage clickSignUp() {
         waitAndClick(signUpButton, driverWait, "Sign Up Button, main page");
         return this;
     }

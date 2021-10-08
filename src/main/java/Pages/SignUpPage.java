@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.RandomGenerator;
 import io.qameta.allure.Step;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
@@ -10,8 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import static Utils.WaiterHelper.waitAndClick;
 import static Utils.WebDriverLauncher.driverWait;
 
-public class MiroSignUpPage {
-    public MiroSignUpPage(WebDriver driver) {
+public class SignUpPage {
+    public SignUpPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
@@ -31,23 +32,24 @@ public class MiroSignUpPage {
     public WebElement iAgreeToTerms;
 
     @Step("Fill registration data")
-    public final MiroSignUpPage fillRegistrationData() {
+    public final SignUpPage fillRegistrationData(String name, String password, String email) {
         waitAndClick(nameField, driverWait, "Sign Up Button, main page");
+        nameField.sendKeys(name);
         passwordField.click();
-        passwordField.sendKeys("k23mpL9a");
+        passwordField.sendKeys(password);
         emailField.click();
-        emailField.sendKeys("groot" + RandomStringUtils.randomAlphabetic(5) + "@j30gj3490jg.com");
+        emailField.sendKeys(email);
         return this;
     }
 
     @Step("Click on Agreement to Terms and Privacy Policy")
-    public final MiroSignUpPage agreeToTerms() {
-        waitAndClick(iAgreeToTerms, driverWait, "Get Started Now button, sign up page");
+    public final SignUpPage agreeToTerms() {
+        waitAndClick(iAgreeToTerms, driverWait, "I Agree To Terms button, sign up page");
         return this;
     }
 
     @Step("Click on Get Started Now button")
-    public final MiroSignUpPage clickSignUp() {
+    public final SignUpPage clickSignUp() {
         waitAndClick(getStartedButton, driverWait, "Get Started Now button, sign up page");
         return this;
     }
