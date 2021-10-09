@@ -17,14 +17,12 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
 
     final String EMPTY_NAME = "";
     final String EMPTY_PASSWORD = "";
-    final String TOO_SHORT_PASSWORD = "short";
 
     final String INCORRECT_EMAIL = "@none.com";
 
     final String INCORRECT_NAME_MESSAGE = "Please enter your name.";
     final String INCORRECT_EMAIL_MESSAGE = "The email you entered is incorrect.";
     final String INCORRECT_PASSWORD_MESSAGE = "Please enter your password.";
-    final String TOO_SHORT_PASSWORD_MESSAGE = "Please use 8+ characters for secure password";
 
     @Test
     @DisplayName("Sing up, invalid data - empty name")
@@ -44,7 +42,7 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
     }
 
     @Test
-    @DisplayName("Sing up, invalid data - empty name")
+    @DisplayName("Sing up, invalid data - incorrect email")
     public void emptyEmail() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -77,20 +75,18 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
     }
 
     @Test
-    @DisplayName("Sing up, password field - too short password")
-    public void tooShortPasswordTest() {
+    @DisplayName("Sing up, invalid data - terms not accepted")
+    public void termsNotAccepter() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
         signUpPage
                 .open()
                 .acceptCookiesIfShown()
-                .fillRegistrationData(NAME, TOO_SHORT_PASSWORD, EMAIL)
-                .agreeToTerms()
+                .fillRegistrationData(NAME, EMPTY_PASSWORD, EMAIL)
                 .clickGetStarted();
 
-        waitFor(signUpPage.passwordStrengthMessage, driverWait, "Waiting for the message");
-        assertThat(signUpPage.passwordStrengthMessage.getText(),
-                containsString(TOO_SHORT_PASSWORD_MESSAGE));
+        assertThat(signUpPage.termNotAcceptedMessage.getText(),
+                containsString("Please agree with the Terms to sign up."));
     }
 }
 

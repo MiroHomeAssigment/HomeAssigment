@@ -52,7 +52,10 @@ public class SignUpPage {
     @FindBy(xpath = ".//*[contains(concat(' ', @data-autotest-id, ' '), ' please-enter-your-password-1')]")
     public WebElement emptyPasswordErrorMessage;
 
-    @FindBy(xpath = ".//*[@id='signup-form-password' and @class='signup__input-hint-text']")
+    @FindBy(xpath = ".//*[@id='termsError' and contains(@class,'js-error')]")
+    public WebElement termNotAcceptedMessage;
+
+    @FindBy(xpath = ".//*[@id='signup-form-password' and contains(@class,'signup__input-hint-text')]")
     public WebElement passwordStrengthMessage;
 
     @FindBy(xpath = ".//*[@id='emailError']")
