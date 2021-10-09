@@ -3,7 +3,6 @@ import Pages.MainPage;
 import Pages.SignUpPage;
 import Utils.RandomGenerator;
 import Utils.WebDriverLauncher;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +31,7 @@ public class SignUpTest extends WebDriverLauncher {
         signUpPage
                 .fillRegistrationData(NAME, PASSWORD, EMAIL)
                 .agreeToTerms()
-                .clickSignUp();
+                .clickGetStarted();
 
         assertThat(emailConfirmationPage.confirmEmailTitle.getText(),
                 containsString("Check your email"));

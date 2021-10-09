@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static Utils.WaiterHelper.waitFor;
 import static Utils.WebDriverLauncher.driver;
 import static Utils.WebDriverLauncher.driverWait;
 import static Utils.WaiterHelper.waitAndClick;
@@ -16,6 +17,7 @@ public class MainPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Open Main page")
     public MainPage open() {
         driver.get("https://miro.com");
         return this;
