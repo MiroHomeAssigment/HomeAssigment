@@ -20,7 +20,9 @@ WebDriverManager.chromedriver().browserVersion("<YOUR CHROME VERSION>").setup();
   
 ## How to launch tests and see results
 For local launch of tests open the project in IDE (Intellij Idea recommended) and put in terminal
-   mvn clean test allure:serve
+```bash
+mvn clean test allure:serve
+```
 As a result
 1. all the necessary libraries will be downloaded by maven
 2. Test suite will be executed 
