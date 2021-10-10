@@ -16,8 +16,10 @@ public class SignUpTest extends WebDriverLauncher {
     final String PASSWORD = "NotGreatNotTerriblePasswd123";
     final String EMAIL = RandomGenerator.generateEmail();
 
+    final String CHECK_YOUR_EMAIL_MESSAGE = "Check your email";
+
     @Test
-    @DisplayName("Sing up, valid data")
+    @DisplayName("Id-1. Sign up, valid data - successful registration")
     public void signUpTest() {
         MainPage mainPage = new MainPage(driver);
         SignUpPage signUpPage = new SignUpPage(driver);
@@ -34,7 +36,7 @@ public class SignUpTest extends WebDriverLauncher {
                 .clickGetStarted();
 
         assertThat(emailConfirmationPage.confirmEmailTitle.getText(),
-                containsString("Check your email"));
+                containsString(CHECK_YOUR_EMAIL_MESSAGE));
 
         assertThat(emailConfirmationPage.confirmEmailInput.isDisplayed(),
                 equalTo(true));

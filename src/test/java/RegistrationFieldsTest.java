@@ -19,13 +19,17 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
     final String EMPTY_PASSWORD = "";
 
     final String INCORRECT_EMAIL = "@none.com";
+    final String ALREADY_REGISTERED_EMAIL = "s.moryahin@gmail.com";
 
     final String INCORRECT_NAME_MESSAGE = "Please enter your name.";
     final String INCORRECT_EMAIL_MESSAGE = "The email you entered is incorrect.";
+    final String ALREADY_REGISTERED_EMAIL_MESSAGE = "Sorry, this email is already registered";
     final String INCORRECT_PASSWORD_MESSAGE = "Please enter your password.";
+    final String TERMS_NOT_ACCEPTED_MESSAGE = "Please agree with the Terms to sign up.";
+
 
     @Test
-    @DisplayName("Sing up, invalid data - empty name")
+    @DisplayName("Id-2. Sign up, invalid data - empty name")
     public void emptyNameErrorTest() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -42,7 +46,7 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
     }
 
     @Test
-    @DisplayName("Sing up, invalid data - incorrect email")
+    @DisplayName("Id-3. Sign up, invalid data - incorrect email")
     public void emptyEmail() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -58,8 +62,28 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
 
     }
 
+
     @Test
-    @DisplayName("Sing up, invalid data - empty password")
+    @DisplayName("Id-4. Sign up, invalid data - email already in use")
+    public void alreadyRegisteredEmail() {
+        SignUpPage signUpPage = new SignUpPage(driver);
+
+        signUpPage
+                .open()
+                .acceptCookiesIfShown()
+                .fillRegistrationData(NAME, PASSWORD, ALREADY_REGISTERED_EMAIL)
+                .agreeToTerms()
+                .clickGetStarted();
+
+        waitFor(signUpPage.emailErrorMessage, driverWait,
+                "Waiting for the message that email is already in use");
+        assertThat(signUpPage.emailErrorMessage.getText(),
+                containsString(ALREADY_REGISTERED_EMAIL_MESSAGE));
+
+    }
+
+    @Test
+    @DisplayName("Id-5. Sign up, invalid data - empty password")
     public void emptyEmailErrorTest() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -75,7 +99,7 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
     }
 
     @Test
-    @DisplayName("Sing up, invalid data - terms not accepted")
+    @DisplayName("Id-6. Sign up, invalid data - terms not accepted")
     public void termsNotAccepter() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -86,7 +110,7 @@ public class RegistrationFieldsTest extends WebDriverLauncher {
                 .clickGetStarted();
 
         assertThat(signUpPage.termNotAcceptedMessage.getText(),
-                containsString("Please agree with the Terms to sign up."));
+                containsString(TERMS_NOT_ACCEPTED_MESSAGE));
     }
 }
 

@@ -27,7 +27,7 @@ public class PasswordStrenghtMessageTest extends WebDriverLauncher {
     final String TOO_SHORT_PASSWORD_MESSAGE = "Please use 8+ characters for secure password";
 
     @Test
-    @DisplayName("Sing up, password field - too short password")
+    @DisplayName("Id-7. Sign up, password field - too short password")
     public void tooShortPasswordTest() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
@@ -44,7 +44,7 @@ public class PasswordStrenghtMessageTest extends WebDriverLauncher {
     }
 
     @Test
-    @DisplayName("Sing up, password field - password strenght message check")
+    @DisplayName("Id-8. Sign up, password field - password strenght message check")
     public void passwordStrenghtTest() {
         SignUpPage signUpPage = new SignUpPage(driver);
 
