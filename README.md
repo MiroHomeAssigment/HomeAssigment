@@ -23,6 +23,12 @@ For local launch of tests open the project in IDE (Intellij Idea recommended) an
 ```bash
 mvn clean test allure:serve
 ```
+
+| :warning: On first launch it migh take time to download Allure          |
+|:---------------------------|
+| There will be a message in terminal ```[INFO] Downloading allure commandline complete```. Please be patient      |
+
+
 As a result
 1. all the necessary libraries will be downloaded by maven
 2. Test suite will be executed 
