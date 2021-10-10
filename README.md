@@ -9,7 +9,7 @@ Language and libraries being used for the project
 - Hamcrest
 - Allure report
 
-#Getting started
+# Getting started
 ## Prerequisites
 This project uses chromeDriver. In order to launch it, you need to install chrome browser. By default the project configured to work with chrome version 94. If your version of chrome differs, please do the following:
 1. Check your browser version
